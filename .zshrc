@@ -118,10 +118,13 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias ..="cd .."
-alias vi="nvim"
-alias v="nvim"
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
 alias cf='cd $(find * -type d | fzf)'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias gst='git status'
+alias lg='lazygit'
 
 # Git related
 
@@ -142,6 +145,16 @@ path+=('/opt/flutter/bin')
 export PATH
 # export GO111MODULE=off  
 path+=('/home/yannic/go/bin')
+
+export EDITOR='nvim'
+
+function flutter-watch() {
+  tmux send-keys "flutter run $1 $2 $3 $4 --pid-file=/tmp/tf1.pid" Enter \;\
+  split-window -v \;\
+  send-keys 'npx -y nodemon -e dart -x "cat /tmp/tf1.pid | xargs kill -s USR1"' Enter \;\
+  resize-pane -y 5 -t 1 \;\
+  select-pane -t 0 \;
+}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
