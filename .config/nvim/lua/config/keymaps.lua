@@ -169,6 +169,7 @@ if vim.lsp.inlay_hint then
     vim.lsp.inlay_hint(0, nil)
   end, { desc = "Toggle Inlay Hints" })
 end
+map("n", "<leader>cd", vim.diagnostic.open_float , { desc = "Line Diagnostics" })
 
 -- lazygit
 -- map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
