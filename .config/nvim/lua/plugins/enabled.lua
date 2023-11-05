@@ -1,8 +1,5 @@
 return {
   {
-    "christoomey/vim-tmux-navigator",
-  },
-  {
     -- Theme inspired by Atom
     "tanvirtin/monokai.nvim",
     priority = 1000,
@@ -31,17 +28,10 @@ return {
     },
   },
   {
+    "christoomey/vim-tmux-navigator",
+  },
+  {
     "nvim-telescope/telescope.nvim",
-    defaults = {
-      mappings = {
-        i = {
-          ["<C-u>"] = false,
-          ["<C-d>"] = false,
-          ["<A-j>"] = "move_selection_next",
-          ["<A-k>"] = "move_selection_previous",
-        },
-      },
-    },
   },
   {
     "hrsh7th/nvim-cmp",
@@ -59,8 +49,8 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ["<A-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<A-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
