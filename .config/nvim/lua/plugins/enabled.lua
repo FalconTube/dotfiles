@@ -1,0 +1,98 @@
+return {
+  {
+    "christoomey/vim-tmux-navigator",
+  },
+  {
+    -- Theme inspired by Atom
+    "tanvirtin/monokai.nvim",
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("monokai_pro")
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    lazy = false,
+    opts = {
+      toggler = {
+        ---Line-comment toggle keymap
+        line = "<C-_>",
+        ---Block-comment toggle keymap
+        -- block = '<C-_>',
+      },
+      ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+      opleader = {
+
+        ---Line-comment keymap
+        line = "<C-_>",
+        ---Block-comment keymap
+        -- block = '<C-_>',
+      },
+    },
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    defaults = {
+      mappings = {
+        i = {
+          ["<C-u>"] = false,
+          ["<C-d>"] = false,
+          ["<A-j>"] = "move_selection_next",
+          ["<A-k>"] = "move_selection_previous",
+        },
+      },
+    },
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+      local cmp = require("cmp")
+      local defaults = require("cmp.config.default")()
+      return {
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<A-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<A-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-e>"] = cmp.mapping.abort(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<S-CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        }),
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+          { name = "buffer" },
+          { name = "path" },
+        }),
+        formatting = {
+          format = function(_, item)
+            local icons = require("lazyvim.config").icons.kinds
+            if icons[item.kind] then
+              item.kind = icons[item.kind] .. item.kind
+            end
+            return item
+          end,
+        },
+        experimental = {
+          ghost_text = {
+            hl_group = "CmpGhostText",
+          },
+        },
+        sorting = defaults.sorting,
+      }
+    end,
+  },
+}
