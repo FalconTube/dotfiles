@@ -136,15 +136,18 @@ alias lg='lazygit'
 # Right arrow
 # bindkey "^[[1;5D" backward-word
 #bindkey -e 
-#bindkey ";5C" forward-word
-#bindkey ";5D" backward-word
+# bindkey ";5C" forward-word
+# bindkey ";5D" backward-word
 
 
 # PATH
 path+=('/opt/flutter/bin')
-export PATH
+path+=('/opt/rocm/bin')
 # export GO111MODULE=off  
 path+=('/home/yannic/go/bin')
+export PATH
+export ROCM_PATH='/opt/rocm'
+ 
 
 export EDITOR='nvim'
 
