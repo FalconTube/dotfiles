@@ -128,13 +128,14 @@ alias tmux='tmux -2'
 alias devbuild='devcontainer up --mount "type=bind,source=$HOME/.config/nvim,target=/home/developer/.config/nvim" --workspace-folder .'
 alias vd='devcontainer exec --workspace-folder . nvim'
 alias shd='devcontainer exec --workspace-folder . bash'
-alias frontend="cd /home/yannic/Programming/piedbiker/frontend && \
+alias frontend="cd $HOME/Programming/piedbiker/frontend && \
   devcontainer up --mount \"type=bind,source=$HOME/.config/nvim,target=/home/developer/.config/nvim\" --workspace-folder . && \
   devcontainer exec --workspace-folder . 'nvim' --headless --listen 0.0.0.0:6666 &" 
 alias task="go-task"
 
 # PATH
-path+=('/home/yannic/go/bin')
+path+=("$HOME/go/bin")
+path+=("$HOME/.local/bin")
 export PATH
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude go'
 export EDITOR='nvim'
