@@ -118,9 +118,6 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias ..="cd .."
-alias vim='nvim'
-alias vi='nvim'
-alias v='nvim'
 alias cf='cd $(find * -type d | fzf)'
 alias lg='lazygit'
 alias lad='lazydocker'
@@ -139,6 +136,19 @@ path+=("$HOME/.local/bin")
 export PATH
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude go'
 export EDITOR='nvim'
+
+# Optional aliases, if exist
+if command -v exa &> /dev/null; then
+  alias ls='eza'
+fi
+if command -v bat &> /dev/null; then
+  alias cat='bat'
+fi
+if command -v nvim &> /dev/null; then
+  alias vim='nvim'
+  alias vi='nvim'
+  alias v='nvim'
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
