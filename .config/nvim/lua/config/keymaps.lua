@@ -18,9 +18,6 @@ vim.keymap.set("n", "<A-j>", "<C-w>j", { desc = "Go to Lower Window", remap = tr
 vim.keymap.set("n", "<A-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 vim.keymap.set("n", "<A-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
-if vim.g.neovide then
-end
-
 -- Terminal lazy
 local lazyterm = function()
   LazyVim.terminal(nil, { cwd = LazyVim.root() })
@@ -36,17 +33,28 @@ local comment = require("Comment").setup()
 comment.toggler.line = "<C-/>"
 comment.opleader.line = "<C-/>"
 
--- neovide
--- if vim.g.neovide then
-vim.g.neovide_scroll_animation_length = 0.3
-vim.g.neovide_cursor_trail_size = 0.3
-vim.g.neovide_scale_factor = 0.7
-
 vim.keymap.set("v", "<C-c>", '"+y', { noremap = true })
 vim.keymap.set("n", "<C-v>", '"+P', { noremap = true })
 vim.keymap.set("v", "<C-v>", '"+P', { noremap = true })
 vim.keymap.set("c", "<C-v>", '<C-o>l<C-o>"+<C-o>P<C-o>l', { noremap = true })
 vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli', { noremap = true })
 vim.keymap.set("t", "<C-v>", '<C-\\><C-n>"+Pi', { noremap = true })
+
+-- neovide scaling
+if vim.g.neovide == true then
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-a>",
+    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
+    { silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-x>",
+    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
+    { silent = true }
+  )
+  vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
+end
 
 -- end
