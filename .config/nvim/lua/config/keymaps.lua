@@ -25,8 +25,8 @@ end
 local lazyterm = function()
   LazyVim.terminal(nil, { cwd = LazyVim.root() })
 end
-vim.keymap.set("n", "<C-i>", lazyterm, { desc = "Terminal (Root Dir)" })
-vim.keymap.set("t", "<C-i>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+vim.keymap.set("n", "<C-n>", lazyterm, { desc = "Terminal (Root Dir)" })
+vim.keymap.set("t", "<C-n>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- Crtl + / (forward slash) comment
 -- Need to remove any previous mappings from it
