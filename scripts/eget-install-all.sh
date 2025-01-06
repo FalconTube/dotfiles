@@ -8,6 +8,7 @@ declare -A repos=(
   ["sharkdp/bat"]="latest"
   ["eza-community/eza"]="latest"
   ["go-task/task"]="latest"
+  ["ajeetdsouza/zoxide"]="latest"
 
 )
 

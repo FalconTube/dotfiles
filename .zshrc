@@ -120,10 +120,11 @@ alias cf='cd $(find * -type d | fzf)'
 alias lg='lazygit'
 alias lad='lazydocker'
 alias tmux='tmux -2'
-alias devbuild='devcontainer up --mount "type=bind,source=$HOME/.config/nvim,target=/home/developer/.config/nvim" --workspace-folder .'
+alias devbuild='xhost local:$USER && devcontainer up --mount "type=bind,source=$HOME/.config/nvim,target=/home/developer/.config/nvim" --workspace-folder .'
 alias vd='devcontainer exec --workspace-folder . nvim'
-alias shd='devcontainer exec --workspace-folder . bash'
+alias shd='xhost local:$USER && devcontainer exec --workspace-folder . bash'
 alias frontend="cd $HOME/Programming/piedbiker/frontend && \
+  xhost local:$USER &&
   devcontainer up --mount \"type=bind,source=$HOME/.config/nvim,target=/home/developer/.config/nvim\" --workspace-folder . && \
   devcontainer exec --workspace-folder . 'nvim' --headless --listen 0.0.0.0:6666 &" 
 alias task="go-task"
@@ -131,8 +132,10 @@ alias task="go-task"
 # PATH
 path+=("$HOME/go/bin")
 path+=("$HOME/.local/bin")
+export PATH="$HOME/development/flutter/bin:$PATH"
 export PATH
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude go'
+export CHROME_EXECUTABLE="/usr/bin/thorium-browser"
 export EDITOR='nvim'
 
 # Optional aliases, if exist
@@ -147,6 +150,16 @@ if command -v nvim &> /dev/null; then
   alias vi='nvim'
   alias v='nvim'
 fi
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+  alias cd='z'
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/yannic/.dart-cli-completion/zsh-config.zsh ]] && . /home/yannic/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
