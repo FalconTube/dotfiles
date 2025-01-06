@@ -19,11 +19,15 @@ vim.keymap.set("n", "<A-k>", "<C-w>k", { desc = "Go to Upper Window", remap = tr
 vim.keymap.set("n", "<A-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 -- Terminal lazy
-local lazyterm = function()
-  LazyVim.terminal(nil, { cwd = LazyVim.root() })
+local terminal = function()
+  -- Snacks.terminal({ "gitui" })
+  Snacks.terminal()
 end
-vim.keymap.set("n", "<C-n>", lazyterm, { desc = "Terminal (Root Dir)" })
-vim.keymap.set("t", "<C-n>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+-- local lazyterm = function()
+--   LazyVim.terminal(nil, { cwd = LazyVim.root() })
+-- end
+vim.keymap.set("n", "<A-b>", terminal, { desc = "Terminal (Root Dir)" })
+vim.keymap.set("t", "<A-b>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- Crtl + / (forward slash) comment
 -- Need to remove any previous mappings from it
