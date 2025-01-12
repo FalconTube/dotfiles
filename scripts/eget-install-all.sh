@@ -9,6 +9,7 @@ declare -A repos=(
   ["eza-community/eza"]="latest"
   ["go-task/task"]="latest"
   ["ajeetdsouza/zoxide"]="latest"
+  ["wilfred/difftastic"]="latest"
 
 )
 

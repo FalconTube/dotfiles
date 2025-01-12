@@ -1,3 +1,5 @@
 git:
   merging:
     args: "--no-ff"
+  paging:
+    externalDiffCommand: difft --color=always
