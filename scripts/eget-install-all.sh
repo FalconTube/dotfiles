@@ -1,3 +1,16 @@
+#!/bin/bash
+#
+
+# Create local bin folder
+BINFOLD=$HOME/.local/bin
+mkdir -p $BINFOLD
+
+# Include current dir for eget
+export PATH=$PATH:.
+export PATH=$PATH:$BINFOLD
+
+# Dependencies
+
 declare -A repos=(
   ["nelsonenzo/tmux-appimage"]="latest"
   ["neovim/neovim"]="latest"
@@ -25,10 +38,17 @@ for repo in "${!repos[@]}"; do
   fi
 done
 
+# Rename nvim
+echo "Renaming nvim"
+mv $BINFOLD/nvim* $BINFOLD/nvim
+
+
 # Also install tpm if not exist
-if not [ -d ~/.tmux/plugins/tpm/ ]; then
-  echo "TPM not installed yet. Grabbing it now..."
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-else
-  echo "TPM installed already at ~/.tmux/plugins/tpm/. Skipping installation."
-fi
+# if not [ -d ~/.tmux/plugins/tpm/ ]; then
+#   echo "TPM not installed yet. Grabbing it now..."
+#   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# else
+#   echo "TPM installed already at ~/.tmux/plugins/tpm/. Skipping installation."
+# fi
+
+
