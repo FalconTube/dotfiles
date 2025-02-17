@@ -13,6 +13,24 @@ if os.getenv("TMUX") then
   vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
   vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 end
+-- Tmux Alt
+if os.getenv("TMUX") then
+  -- vim.g.tmux_navigator_no_mappings = 1
+  vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
+  vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
+  vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
+  vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
+end
+if os.getenv("ZELLIJ") then
+  vim.keymap.set("n", "<C-h>", "<cmd>ZellijNavigateLeft<cr>", { silent = true, desc = "navigate left or tab" })
+  vim.keymap.set("n", "<C-j>", "<cmd>ZellijNavigateDown<cr>", { silent = true, desc = "navigate down" })
+  vim.keymap.set("n", "<C-k>", "<cmd>ZellijNavigateUp<cr>", { silent = true, desc = "navigate up" })
+  vim.keymap.set("n", "<C-l>", "<cmd>ZellijNavigateRight<cr>", { silent = true, desc = "navigate right or tab" })
+  -- vim.keymap.set("n", "<C-h>", "<C-w>h")
+  -- vim.keymap.set("n", "<C-j>", "<C-w>j")
+  -- vim.keymap.set("n", "<C-k>", "<C-w>k")
+  -- vim.keymap.set("n", "<C-l>", "<C-w>l")
+end
 vim.keymap.set("n", "<A-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
 vim.keymap.set("n", "<A-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
 vim.keymap.set("n", "<A-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })

@@ -142,9 +142,6 @@ export EDITOR='nvim'
 if command -v exa &> /dev/null; then
   alias ls='eza'
 fi
-if command -v bat &> /dev/null; then
-  alias cat='bat'
-fi
 if command -v nvim &> /dev/null; then
   alias vim='nvim'
   alias vi='nvim'
@@ -153,6 +150,12 @@ fi
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
   alias cd='z'
+fi
+if command -v neovide &> /dev/null; then
+  alias nv='neovide'
+fi
+if command -v zellij &> /dev/null; then
+  alias tmux='zellij'
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

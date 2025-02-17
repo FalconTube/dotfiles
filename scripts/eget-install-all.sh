@@ -10,6 +10,7 @@ declare -A repos=(
   ["go-task/task"]="latest"
   ["ajeetdsouza/zoxide"]="latest"
   ["wilfred/difftastic"]="latest"
+  ["zellij-org/zellij"]="latest"
 
 )
 
