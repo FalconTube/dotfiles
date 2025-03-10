@@ -1,0 +1,30 @@
+theme = "jetbrains_dark"
+
+[editor]
+line-number = "relative"
+mouse = true
+bufferline = "multiple"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "underline"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[keys.insert]
+j = { k = "normal_mode" }
+
+[keys.normal]
+"C-7" = "toggle_comments"
+C-h = ":buffer-previous"
+C-l = ":buffer-next"
+C-w = ":buffer-close" 
+
+[keys.normal.space]
+e = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
+w = ":toggle soft-wrap.enable"
+
+[keys.select]
+"C-7" = "toggle_comments"
