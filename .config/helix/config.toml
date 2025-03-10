@@ -3,28 +3,52 @@ theme = "jetbrains_dark"
 [editor]
 line-number = "relative"
 mouse = true
-bufferline = "multiple"
+bufferline = "always"
+auto-pairs = false
 
 [editor.cursor-shape]
 insert = "bar"
-normal = "underline"
+normal = "block"
 select = "underline"
-
-[editor.file-picker]
-hidden = false
 
 [keys.insert]
 j = { k = "normal_mode" }
 
 [keys.normal]
 "C-7" = "toggle_comments"
-C-h = ":buffer-previous"
-C-l = ":buffer-next"
-C-w = ":buffer-close" 
+H = ":buffer-previous"
+L = ":buffer-next"
+C-x = ":buffer-close" 
+
+X = "extend_line_above" # Shift+x to select the whole line above
+D = [ "extend_to_line_end", "change_selection"] # Wipe and edit the current line from cursor position
+
+# Use system clipboard
+p = "paste_clipboard_before"
+y = "yank_main_selection_to_clipboard"
+
+# Duplicate lines above or below
+S-A-j = ["normal_mode", "extend_to_line_bounds", "yank", "open_below", "replace_with_yanked", "collapse_selection", "normal_mode", "goto_line_start"]
+S-A-k = ["normal_mode", "extend_to_line_bounds", "yank", "open_above", "replace_with_yanked", "collapse_selection", "normal_mode", "goto_line_start"]
 
 [keys.normal.space]
-e = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
+e = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open" # Yazi
 w = ":toggle soft-wrap.enable"
+g = ":sh zellij run -c -f -x 5% -y 5% --width 90% --height 90% -- lazygit"
+H = ":toggle lsp.display-inlay-hints"
+c = "code_action" # foo
 
 [keys.select]
 "C-7" = "toggle_comments"
+
+[editor.inline-diagnostics]
+cursor-line = "info"
+other-lines = "warning"
+
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.file-picker]
+hidden = false
