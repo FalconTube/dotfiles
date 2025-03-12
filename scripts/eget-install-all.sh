@@ -39,6 +39,37 @@ for repo in "${!repos[@]}"; do
   fi
 done
 
+HXVER="25.01.1"
+# Check if helix needs to be installed
+DOHELIX=false
+if hx --version &>/dev/null; then
+  # helix is installed
+  ver=$(hx --version | awk '{print $2}')
+  if [ "$ver" != "$HXVER" ]; then
+    DOHELIX=true
+  fi
+
+  else
+  # helix not installed yet, needs installation
+  DOHELIX=true
+fi
+
+if [ "$DOHELIX" = "true" ]; then
+  echo "Installing Helix version $HXVER"
+
+
+  # Install helix and helix runtime
+  wget "https://github.com/helix-editor/helix/releases/download/$HXVER/helix-$HXVER-x86_64-linux.tar.xz" -O helix.tar.xz
+  mkdir tmp_helix
+  tar xf helix.tar.xz -C tmp_helix --strip-components 1
+  cp tmp_helix/hx $BINFOLD
+  cp -r tmp_helix/runtime $HOME/.config/helix
+  rm -rf tmp_helix
+else 
+  echo "Helix version $HXVER already installed."
+fi
+
+
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
