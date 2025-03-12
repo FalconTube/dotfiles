@@ -24,7 +24,8 @@ declare -A repos=(
   ["ajeetdsouza/zoxide"]="latest"
   ["wilfred/difftastic"]="latest"
   ["zellij-org/zellij"]="latest"
-
+  ["junegunn/fzf"]="latest"
+  ["helix-editor/helix"]="latest"
 )
 
 # Install all deps via eget
@@ -38,10 +39,12 @@ for repo in "${!repos[@]}"; do
   fi
 done
 
+# Install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+
 # Rename nvim
 echo "Renaming nvim"
 mv $BINFOLD/nvim* $BINFOLD/nvim
-
 
 # Also install tpm if not exist
 # if not [ -d ~/.tmux/plugins/tpm/ ]; then
@@ -50,5 +53,3 @@ mv $BINFOLD/nvim* $BINFOLD/nvim
 # else
 #   echo "TPM installed already at ~/.tmux/plugins/tpm/. Skipping installation."
 # fi
-
-
