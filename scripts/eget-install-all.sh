@@ -25,7 +25,7 @@ declare -A repos=(
   ["wilfred/difftastic"]="latest"
   ["zellij-org/zellij"]="latest"
   ["junegunn/fzf"]="latest"
-  ["helix-editor/helix"]="latest"
+  ["sxyazi/yazi"]="latest"
 )
 
 # Install all deps via eget
