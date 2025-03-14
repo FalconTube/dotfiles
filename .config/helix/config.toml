@@ -21,6 +21,9 @@ j = { k = "normal_mode" }
 H = ":buffer-previous"
 L = ":buffer-next"
 C-x = ":buffer-close" 
+K = "hover"
+"*" = ["move_char_right", "move_prev_word_start", "move_next_word_start", "search_selection"]
+"Y" = ["move_char_right", "move_prev_word_start", "move_next_word_start", "search_selection", "yank_main_selection_to_clipboard"]
 
 X = "extend_line_above" # Shift+x to select the whole line above
 D = [ "extend_to_line_end", "change_selection"] # Wipe and edit the current line from cursor position
