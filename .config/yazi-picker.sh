@@ -1,0 +1,1 @@
+helix/yazi-picker.sh

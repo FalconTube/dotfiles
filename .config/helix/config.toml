@@ -6,6 +6,7 @@ mouse = true
 bufferline = "always"
 auto-pairs = false
 true-color = true
+end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -25,8 +26,8 @@ X = "extend_line_above" # Shift+x to select the whole line above
 D = [ "extend_to_line_end", "change_selection"] # Wipe and edit the current line from cursor position
 
 # Use system clipboard
-p = "paste_clipboard_before"
-y = "yank_main_selection_to_clipboard"
+# p = "paste_clipboard_before"
+# y = "yank_main_selection_to_clipboard"
 
 # Duplicate lines above or below
 S-A-j = ["normal_mode", "extend_to_line_bounds", "yank", "open_below", "replace_with_yanked", "collapse_selection", "normal_mode", "goto_line_start"]
@@ -43,8 +44,8 @@ c = "code_action" # foo
 "C-7" = "toggle_comments"
 
 [editor.inline-diagnostics]
-cursor-line = "info"
-other-lines = "warning"
+cursor-line = "hint"
+other-lines = "disable"
 
 [editor.indent-guides]
 render = true
