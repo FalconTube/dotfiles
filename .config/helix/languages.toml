@@ -1,10 +1,4 @@
-# [[language]]
-# name = "python"
-# roots = ["pyproject.toml", "setup.py", "Poetry.lock", ".git"]
-# language-server = { command = "pyright-langserver", args = ["--stdio"] }
-# auto-format = true
-# formatter = {command = 'black', args = ["--quiet", "-"]}
-# config = ""
+
 [[language]]
 name = "toml"
 formatter = { command = 'prettier', args = ["--parser", "toml"] }
@@ -36,23 +30,21 @@ name = "markdown"
 formatter = { command = 'prettier', args = ["--parser", "markdown"] }
 auto-format = true
 
-[language-server.ruff-lsp]
-command = "ruff-lsp"
-
-[language-server.ruff-lsp.config]
-documentFormatting = true 
-settings.run = "onSave"
-
 [language-server.pyright]
 command = "pyright-langserver"
-args = [ "--stdio" ]
-config.reportMissingtypeStubs = false
+args = ["--stdio"]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server", "-q", "--preview"] 
+
 
 [[language]]
 name = "python"
+shebangs = ["python"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json", "requirements.txt", ".venv/"]
+comment-token = "#"
+language-servers = [ {name = "pyright"}, "ruff" ]
 auto-format = true
-language-servers = [
-  { name = "ruff-lsp", only-features = [ "format", "diagnostics" ] },
-  { name = "pyright", except-features = [ "format", "diagnostics" ] },
-]
+
 
