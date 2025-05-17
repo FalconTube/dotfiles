@@ -162,6 +162,8 @@ if command -v helix &> /dev/null; then
   alias hx="helix"
 fi
 
+alias grm="go run main.go"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
