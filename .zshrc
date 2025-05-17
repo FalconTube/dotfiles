@@ -172,3 +172,5 @@ alias grm="go run main.go"
 [[ -f /home/yannic/.dart-cli-completion/zsh-config.zsh ]] && . /home/yannic/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
 
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
