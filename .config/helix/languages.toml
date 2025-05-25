@@ -1,7 +1,8 @@
 
 [[language]]
 name = "toml"
-formatter = { command = 'prettier', args = ["--parser", "toml"] }
+formatter = { command = 'taplo', args = ["format", "-"] }
+auto-format = true
 
 [[language]]
 name = "html"
@@ -30,22 +31,28 @@ name = "markdown"
 formatter = { command = 'prettier', args = ["--parser", "markdown"] }
 auto-format = true
 
+[[language]]
+name = "python"
+shebangs = ["python"]
+roots = [
+  "pyproject.toml",
+  "setup.py",
+  "poetry.lock",
+  "pyrightconfig.json",
+  "requirements.txt",
+  ".venv/",
+]
+comment-token = "#"
+language-servers = [{ name = "pyright" }, "ruff"]
+auto-format = true
+
 [language-server.pyright]
 command = "pyright-langserver"
 args = ["--stdio"]
 
 [language-server.ruff]
 command = "ruff"
-args = ["server", "-q", "--preview"] 
-
-
-[[language]]
-name = "python"
-shebangs = ["python"]
-roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json", "requirements.txt", ".venv/"]
-comment-token = "#"
-language-servers = [ {name = "pyright"}, "ruff" ]
-auto-format = true
+args = ["server", "-q", "--preview"]
 
 [[language]]
 name = "go"
@@ -66,6 +73,7 @@ command = [
   "--issues-exit-code=1",
 ]
 
- 
-
-
+# [[language]]
+# name = "bash"
+# auto-format = true
+# languague-servers = ["bash-language-server"]

@@ -23,6 +23,12 @@ pkgs=(
   "tldr"
   "7zip"
   "difftastic"
-)
+  "trash-cli"
+  "gh"
+  "taplo" # toml config
+  "zsh-autosuggestions"
+  "zsh-syntax-highlighting"
+  "powerlevel10k"
+  )
 
 brew install ${pkgs[@]}
