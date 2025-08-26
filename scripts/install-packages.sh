@@ -29,6 +29,11 @@ pkgs=(
   "zsh-autosuggestions"
   "zsh-syntax-highlighting"
   "powerlevel10k"
+  "xh"
+  "gopass"
+  "prettier"
+  "vscode-langservers-extracted"
+  "git-credential-oauth"
   )
 
 brew install ${pkgs[@]}

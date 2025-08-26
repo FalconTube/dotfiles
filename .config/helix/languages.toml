@@ -30,6 +30,19 @@ auto-format = true
 name = "markdown"
 formatter = { command = 'prettier', args = ["--parser", "markdown"] }
 auto-format = true
+language-servers = ["marksman", "harper-ls"]
+
+[[language]]
+name = "yaml"
+formatter = { command = 'prettier', args = ["--parser", "yaml"] }
+auto-format = true
+language-servers = ["yaml-language-server"]
+
+[[language]]
+name = "docker-compose"
+formatter = { command = 'prettier', args = ["--parser", "yaml"] }
+auto-format = true
+language-servers = ["yaml-language-server"]
 
 [[language]]
 name = "python"
@@ -73,7 +86,6 @@ command = [
   "--issues-exit-code=1",
 ]
 
-# [[language]]
-# name = "bash"
-# auto-format = true
-# languague-servers = ["bash-language-server"]
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]

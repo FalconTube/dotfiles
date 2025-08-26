@@ -36,6 +36,7 @@ alias vpn-disable="sudo tailscale set --exit-node= "
 # PATH
 path+=("$HOME/.local/bin")
 export PATH="$HOME/development/flutter/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 # export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude go'
 export CHROME_EXECUTABLE="/usr/bin/thorium-browser"
 export EDITOR='hx'
@@ -97,3 +98,16 @@ if [[ -z "$ZELLIJ" ]]; then
         exit
     fi
 fi
+
+# Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+autoload -Uz compinit
+compinit
+source <(gopass completion zsh)
