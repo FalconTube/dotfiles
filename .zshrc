@@ -32,6 +32,7 @@ alias frontend="cd $HOME/Programming/piedbiker/frontend && \
 alias grm="go run main.go"
 alias vpn-enable="sudo tailscale set --exit-node=100.115.247.78"
 alias vpn-disable="sudo tailscale set --exit-node= "
+alias dockertask="docker run --rm -it -v \"$(pwd):/app\" ajvlint:latest"
 
 # PATH
 path+=("$HOME/.local/bin")
@@ -40,6 +41,8 @@ export PATH="$HOME/go/bin:$PATH"
 # export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude go'
 export CHROME_EXECUTABLE="/usr/bin/thorium-browser"
 export EDITOR='hx'
+export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
+export PATH=$PATH:$(go env GOPATH)/bin
 
 
 # Homebrew
@@ -110,4 +113,14 @@ function y() {
 
 autoload -Uz compinit
 compinit
+
+
+
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/yannic/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
 source <(gopass completion zsh)
