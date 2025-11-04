@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-paths=$(yazi --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
+START_PATH="${2:-.}"
+paths=$(yazi "$START_PATH" --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
 
 if [[ -n "$paths" ]]; then
 	zellij action toggle-floating-panes
