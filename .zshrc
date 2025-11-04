@@ -111,11 +111,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-autoload -Uz compinit
-compinit
-
-
-
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/yannic/.zshrc'
 

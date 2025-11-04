@@ -53,9 +53,12 @@ S-A-k = [
 [keys.normal.space]
 e = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open" # Yazi
 w = ":toggle soft-wrap.enable"
-g = ":sh zellij run -c -f -x 5%% -y 5%% --width 90%% --height 90%% -- lazygit"
+g = [
+  ":sh zellij run -c -f -x 5%% -y 5%% --width 90%% --height 90%% -- lazygit",
+  ":reload-all",
+]
 H = ":toggle lsp.display-inlay-hints"
-c = "code_action"                                                                                                 # foo
+c = "code_action" # foo
 
 [keys.select]
 "C-7" = "toggle_comments"
